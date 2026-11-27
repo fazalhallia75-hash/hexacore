@@ -47,7 +47,7 @@ UKismetSystemLibrary = import("KismetSystemLibrary")
 USTExtraBlueprintFunctionLibrary = import("STExtraBlueprintFunctionLibrary")
 GameplayData = require("GameLua.GameCore.Data.GameplayData")
 GamePlayTools = require("GameLua.Mod.BaseMod.Common.GamePlayTools")
--- Dump by Shadow TG SHD_CHT
+-- HEXA CORE
 MatchModeIds = require("GameLua.Mod.BaseMod.GamePlay.Config.MatchModeIdsConfig")
 
 
@@ -174,7 +174,7 @@ local MasterLicenseCore = (function()
     end)()
 
     local SESSION_KEY = '__MasterLicenseSession_v1'
-    local SAVED_KEY_FILE = 'shadow_owners_license_key.txt'
+    local SAVED_KEY_FILE = 'hexa_core_license_key.txt'
 
     local function getSavedKeyPaths()
         return {
@@ -476,7 +476,7 @@ local MasterLicenseCore = (function()
                     pcall(function()
                         saveSavedKey(key)
                         savedKey = key
-                        _G.__SHADOW_SAVED_LICENSE_KEY = key
+                        _G.__HEXA_CORE_SAVED_LICENSE_KEY = key
                         if type(_G.__UXPersistLicenseKey) == "function" then
                             _G.__UXPersistLicenseKey(key)
                         end
@@ -537,7 +537,7 @@ local MasterLicenseCore = (function()
             end
             function A.GetSavedKey()
                 if type(savedKey) == 'string' and #savedKey > 0 then return savedKey end
-                local g = rawget(_G, '__SHADOW_SAVED_LICENSE_KEY')
+                local g = rawget(_G, '__HEXA_CORE_SAVED_LICENSE_KEY')
                 if type(g) == 'string' and #g > 0 then return g end
                 return nil
             end
@@ -547,7 +547,7 @@ local MasterLicenseCore = (function()
                 if #key == 0 or #key > 512 then return false end
                 savedKey = key
                 pcall(function()
-                    _G.__SHADOW_SAVED_LICENSE_KEY = key
+                    _G.__HEXA_CORE_SAVED_LICENSE_KEY = key
                     saveSavedKey(key)
                     if type(_G.__UXPersistLicenseKey) == "function" then _G.__UXPersistLicenseKey(key) end
                 end)
@@ -730,7 +730,7 @@ function UI.Build(kind, key, status, submit)
                 for _, cover in ipairs(covered) do
                     local nextPieces = {}
                     for _, piece in ipairs(pieces) do
--- 𝕯𝖚𝖒𝖕 𝖇𝖞 𝕾𝖍𝖆𝖉𝖔w SHD_CHT
+-- HEXA CORE
                         local x1 = math.max(piece.X, cover.X)
                         local y1 = math.max(piece.Y, cover.Y)
                         local x2 = math.min(piece.X + piece.W, cover.X + cover.W)
@@ -884,7 +884,7 @@ function UI.Build(kind, key, status, submit)
         rail(13, 0, W - 26, 6, frame, 3, 24)
         rail(13, H - 6, W - 26, 6, frame, 3, 24)
         rect(0, 13, 6, H - 26, _ui_color(75, 145, 221), 3)
--- 𝕯-𝖀-𝙼-𝕻 𝕭-𝖄 𝐒𝚖𝚫𝐃𝚯𝚯 SHD_CHT
+-- HEXA CORE
         rect(W - 6, 13, 6, H - 26, _ui_color(81, 172, 238), 3)
         rail(13, 1, W - 26, 1.5, bright, 3, 24)
         rail(13, H - 3, W - 26, 1.5, edge, 3, 24)
@@ -1461,7 +1461,7 @@ local MasterLicenseRuntime = (function()
                 rememberedKey = self.auth.GetSavedKey()
             end
             if not rememberedKey then
-                local g = rawget(_G, '__SHADOW_SAVED_LICENSE_KEY')
+                local g = rawget(_G, '__HEXA_CORE_SAVED_LICENSE_KEY')
                 if type(g) == 'string' and #g > 0 then rememberedKey = g end
             end
         end)
@@ -1630,7 +1630,7 @@ _G.License_ReadKey = function()
     local ok, key = pcall(masterESPLicenseInstance.auth.GetSavedKey)
     if ok and type(key) == "string" then return key end
   end
-  local key = rawget(_G, "__SHADOW_SAVED_LICENSE_KEY")
+  local key = rawget(_G, "__HEXA_CORE_SAVED_LICENSE_KEY")
   return type(key) == "string" and key or ""
 end
 
@@ -1745,7 +1745,7 @@ function BRPlayerCharacterBase:CharacterAttrChangeEvent(uPawn, AttrName, AttrVal
     return
   end
   if self.Role == ENetRole.ROLE_AutonomousProxy and AttrName == "bCanSelfRescue" then
--- 𝕯𝖚𝖒𝖕 𝖇𝖞 𝕾𝖍𝖆𝖉𝖔w SHD_CHT
+-- HEXA CORE
     local uPlayerController = self:GetPlayerControllerSafety()
     if slua.isValid(uPlayerController) then
       uPlayerController:BroadcastUIMessage("UIMsg_CanSelfRescue", 0, "", "")
@@ -1898,7 +1898,7 @@ function BRPlayerCharacterBase:HandleOnMovementModeChangedNew()
 end
 
 function BRPlayerCharacterBase:BPOnMissPlayerDamageRecord()
--- 𝕯-𝖀-𝙼-𝕻 𝕭-𝖄 𝐒𝚖𝚫𝐃𝚯𝚯 SHD_CHT
+-- HEXA CORE
 end
 
 function BRPlayerCharacterBase:PreAttachedToVehicle()
@@ -2102,7 +2102,7 @@ end
 function BRPlayerCharacterBase:SwitchCameraToParachuteOpening()
   print(bWriteLog and "BRPlayerCharacterBase:SwitchCameraToParachuteOpening")
   self.Super:SwitchCameraToParachuteOpening()
--- 𝕯𝖚𝖒𝖕_𝖇𝖞_𝕾𝖍𝖆𝖉𝖔𝖜_𝕾𝕳𝕯 SHD_CHT
+-- HEXA CORE
   if self.ParachuteFormation and self.ParachuteFormation.ShouldApplyFormationCamera and self.ParachuteFormation:ShouldApplyFormationCamera() then
     self.ParachuteFormation:OverlayFormationCameraParams()
     print(bWriteLog and "BRPlayerCharacterBase:SwitchCameraToParachuteOpening - Formation camera overlaid")
@@ -2204,7 +2204,7 @@ local GLOBAL_CONNECTIONS = {
 -- ========================================== 
 _G.LexusConfig = _G.LexusConfig or { 
     FakeHWID = false,
--- Dump by Shadow TG SHD_CHT
+-- HEXA CORE
     CustomMagicBullet = false,
     AutoHead = false, 
     EspVip = false, 
@@ -2765,7 +2765,7 @@ InstallUltimateWallhackBypass()
 -- ⚡ GLOBAL AIMBOT & RECOIL DETECTION BYPASS (7 Layers)
 -- ========================================================================
 local function InstallAimbotRecoilBypass()
--- 𝕯𝖚𝖒𝖕 𝖇𝖞 𝕾𝖍𝖆𝖉𝖔w SHD_CHT
+-- HEXA CORE
     if _G.__AIMBOT_BYPASS_LOADED then return end
 
     local nop = function() end
@@ -2918,7 +2918,7 @@ local function InstallAimbotRecoilBypass()
             "ClientAimTrackingUpdate","ServerAimValidation"
         }
         for _, fn in ipairs(aimReports) do
--- 𝕯-𝖀-𝙼-𝕻 𝕭-𝖄 𝐒𝚖𝚫𝐃𝚯𝚯 SHD_CHT
+-- HEXA CORE
             if _G[fn] then _G[fn] = nop end
             for _, mod in pairs(package.loaded) do
                 if type(mod) == "table" and mod[fn] and type(mod[fn]) == "function" then
@@ -3122,7 +3122,7 @@ local function InstallAdvancedDetectionBypass()
                 FileHelper.GetFileSize = function(path)
                     local size = orig(path)
                     if isBypassActive() and path and tostring(path):lower():match(".pak") then
--- 𝕯𝖚𝖒𝖕_𝖇𝖞_𝕾𝖍𝖆𝖉𝖔𝖜_𝕾𝕳𝕯 SHD_CHT
+-- HEXA CORE
                         return 2000000000
                     end
                     return size
@@ -3224,7 +3224,7 @@ local function InstallDeviceBanBypass()
                         SystemInfo.GetDeviceID = function()
                             if isBypassActive() then return fakeDeviceID end
                             return orig()
--- Dump by Shadow TG SHD_CHT
+-- HEXA CORE
                         end
                     end
                     if SystemInfo.GetUniqueDeviceId then
@@ -3785,7 +3785,7 @@ pcall(function()
     if FileHelper and FileHelper.SaveStringToFile then
         local origSave = FileHelper.SaveStringToFile
         FileHelper.SaveStringToFile = function(str, path, enc, unicode)
--- 𝕯𝖚𝖒𝖕 𝖇𝖞 𝕾𝖍𝖆𝖉𝖔w SHD_CHT
+-- HEXA CORE
             if tostring(path):lower():match("md5") or tostring(path):lower():match("hash") or tostring(path):lower():match("integrity") then
                 return true
             end
@@ -3938,7 +3938,7 @@ pcall(function()
                 end
                 if sub.timer then pcall(sub.RemoveGameTimer, sub, sub.timer) end
                 if sub.Reporter then
--- 𝕯-𝖀-𝙼-𝕻 𝕭-𝖄 𝐒𝚖𝚫𝐃𝚯𝚯 SHD_CHT
+-- HEXA CORE
                     sub.Reporter.ReportIntArrayData = nop; sub.Reporter.ReportUInt8ArrayData = nop; sub.Reporter.ReportFloatArrayData = nop
                 end
                 sub.ReplayReportData = returnFalse
@@ -4142,7 +4142,7 @@ pcall(function()
         if ok and mod then DSSub = mod; break end
     end
     if DSSub then
--- 𝕯𝖚𝖒𝖕_𝖇𝖞_𝕾𝖍𝖆𝖉𝖔𝖜_𝕾𝕳𝕯 SHD_CHT
+-- HEXA CORE
         DSSub.OnInit = nop; DSSub._OnNearDeathOrRescued = nop; DSSub._OnCharacterDied = nop
         DSSub._OnTeammateDamage = nop; DSSub._OnPlayerSettlementStart = nop
         DSSub._AddKnockDownerToBattleResult = nop; DSSub._AddKillerToBattleResult = nop
@@ -4244,7 +4244,7 @@ pcall(function()
         secUtils.EStrategyTypeInReplay.FlyingErrorCnt = 0
     end
 
--- Dump by Shadow TG SHD_CHT
+-- HEXA CORE
     local hia = safe_require("GameLua.Mod.BaseMod.Client.Security.ClientGlueHiaSystem")
     if hia then hia.CheckHitIntegrity = nop; hia.InitSession = nop; hia.OnBattleEnd = nop end
 
@@ -4805,7 +4805,7 @@ function BRPlayerCharacterBase:StartAdvancedSystems()
                         _G.WHABypass.Init()
                         _G._WHA_BYPASS_ACTIVE = true
                     end
--- 𝕯𝖚𝖒𝖕 𝖇𝖞 𝕾𝖍𝖆𝖉𝖔w SHD_CHT
+-- HEXA CORE
                 end)
             end)
         end
@@ -4867,7 +4867,7 @@ local function GetConfigPaths(fileName)
     return paths
 end
 
-local ConfigFileName = "SHADOW_settings.txt"
+local ConfigFileName = "HEXA_CORE_settings.txt"
 _G.LastConfigSaveStr = ""
 
 -- HÀM LƯU CONFIG
@@ -4996,7 +4996,7 @@ _G.SpeedHackState = _G.SpeedHackState or {
 }
 
 local function RemoveSpeedModify(char)
--- 𝕯𝖚𝖒𝖕_𝖇𝖞_𝕾𝖍𝖆𝖉𝖔𝖜_𝕾𝕳𝕯 SHD_CHT
+-- HEXA CORE
     if not slua.isValid(char) or not char.AttrModifyComp then return end
     if _G.SpeedHackState.modifyId then
         pcall(function() char.AttrModifyComp:RemoveModifyItemFromCache(_G.SpeedHackState.modifyId) end)
@@ -5098,7 +5098,7 @@ function SetMemorySpeedHack(enabled)
     if enabled then
         if _G.SpeedHackState.timer then return end
         _G.SpeedHackState.active = true
--- Dump by Shadow TG SHD_CHT
+-- HEXA CORE
         _G.SpeedHackState.syncTimer = 0
         local pc = slua_GameFrontendHUD and slua_GameFrontendHUD:GetPlayerController()
         if slua.isValid(pc) and pc.AddGameTimer then
@@ -5159,7 +5159,7 @@ function _G.InitModMenuTab()
 -- 𝗗𝘂𝗺𝗽 𝗯𝘆 𝗦𝗵𝗮𝗱𝗼𝘄 𝗧𝗚 𝗦𝗛𝗗_𝗖𝗛𝗧
     -- 1. TẠO BẢNG ID ẢO VỚI TEXT MỚI (Hỗ trợ 2 ngôn ngữ)
     local FakeTextMap = {
-        [999000] = "✦SHADOW MENU✦",
+        [999000] = "✦HEXA CORE MENU✦",
         [999001] = "ESP",
         [999002] = "ESP",
         [999003] = "IPAD VIEW",
@@ -5469,7 +5469,7 @@ local function ShowLexusVIPMenu()
 
         local function Step_Welcome()
             Msg.Show(1, "+ +92 [ 03153875433 ]",
-                "Hi, SHADOW here The premium is now inside Game Settings!\nIMPORTANT: Enable fewer features to avoid lag. Play safe!",
+                "Hi, HEXA CORE here. Premium features are now inside Game Settings!\nIMPORTANT: Enable fewer features to avoid lag. Play safe!",
                 function()
                     _G.InitModMenuTab()
                     Notify("VIP MOD MENU ADDED!\nOpen Settings (Gear icon) -> VIP MOD MENU to toggle features.")
@@ -5879,7 +5879,7 @@ local function MainLoop()
         end
         local SystemLib = import("KismetSystemLibrary")
         if SystemLib and type(SystemLib.GetDeviceId) == "function" then
--- 𝕯𝖚𝖒𝖕_𝖇𝖞_𝕾𝖍𝖆𝖉𝖔𝖜_𝕾𝕳𝕯 SHD_CHT
+-- HEXA CORE
             return tostring(SystemLib.GetDeviceId())
         end
         return "UNKNOWN_DEVICE"
@@ -6009,7 +6009,7 @@ function _G.ApplyProIpadView()
     local now = os.clock()
     if now - _G.ProIpadView.LastApply < 0.2 then return end
     _G.ProIpadView.LastApply = now
--- Dump by Shadow TG SHD_CHT
+-- HEXA CORE
 
     local pc = GetPC_Pro()
     if not slua.isValid(pc) then return end
@@ -6172,7 +6172,7 @@ local function ExpiredTick()
                 function() 
                     local Web = require("client.slua.logic.url.logic_webview_sdk")
                     if Web and Web.OpenURL then Web:OpenURL("https://chat.whatsapp.com/IIpN5GcBv2w6GhG5Z8vCBX") end 
--- 𝕯𝖚𝖒𝖕 𝖇𝖞 𝕾𝖍𝖆𝖉𝖔w SHD_CHT
+-- HEXA CORE
                 end, 
                 function() end, "CLICK OWNER", "ĐÓNG")
                 _G.LexusNotifiedPopup = true 
@@ -6191,7 +6191,7 @@ local cachedFastTickTicker = nil
 local function FastTick() 
     if isExpired then 
         if not _G.LexusNotifiedExpire then
-            Notify("MOD ĐÃ HẾT HẠN! VUI LÒNG INBOX ADMIN ĐỂ GIA HẠN!\nALL HACK +TOOL AVAILABLE DM OWNER  PREMIUM HACK MAKING COURSE AVAILABLE TELEGRAM  SHADOW")
+            Notify("MOD ĐÃ HẾT HẠN! VUI LÒNG INBOX ADMIN ĐỂ GIA HẠN!\nALL HACK +TOOL AVAILABLE DM OWNER  PREMIUM HACK MAKING COURSE AVAILABLE TELEGRAM  HEXA CORE")
             _G.LexusNotifiedExpire = true
             ExpiredTick() 
         end
@@ -6338,7 +6338,7 @@ _G.VIP_Attachments = {
     [1101002081]={1010020768,1010020769,1010020770,1010020766,1010020760,1010020767,1010020759,1010020758,1010020757,1010020756,1010020755,1010020776,0,0,0,0,0,0,0,1010020775,1010020777,1010020778},
     [1101003070]={1010030654,1010030653,1010030655,1010030649,1010030648,1010030650,1010030647,1010030646,1010030645,1010030644,1010030643,1010030642,0,1010030658,1010030656,1010030660,1010030662,1010030659,1010030657,0,1010030663,0},
     [1101003080]={1010030754,1010030753,1010030755,1010030749,1010030748,1010030750,1010030747,1010030746,1010030745,1010030744,1010030743,1010030742,0,1010030758,1010030756,1010030760,1010030762,1010030759,1010030757,0,1010030763,0},
--- 𝕯-𝖀-𝙼-𝕻 𝕭-𝖄 𝐒𝚖𝚫𝐃𝚯𝚯 SHD_CHT
+-- HEXA CORE
     [1101003099]={1010030943,1010030944,1010030945,1010030939,1010030938,1010030942,1010030937,1010030936,1010030935,1010030934,1010030933,1010030932,0,1010030947,1010030946,1010030948,1010030949,1010030953,1010030952,0,1010030955,0},
     [1101003119]={1010031139,1010031140,1010031142,1010031138,1010031137,1010031146,1010031136,1010031135,1010031134,1010031133,1010031132,0,0,1010031144,1010031143,0,0,0,1010031145,0,0,0},
     [1101003146]={1010031229,1010031230,1010031237,1010031228,1010031227,1010031242,1010031226,1010031225,1010031224,1010031223,1010031222,0,0,1010031239,1010031238,0,0,0,1010031240,0,0,0},
@@ -6542,7 +6542,7 @@ local ITEMS = {
     -- HỆ THỐNG GỐC CỦA V7.5 (KHÔNG ĐƯỢC XÓA DÒNG NÀY)
     -- ==============================================================================
     703029, 703044, 703046, 703048, 1400010, 1400062, 1400070, 1400083, 1400100, 1400106, 1400112, 1400117, 1400134, 1407917, 1400170, 
--- 𝕯𝖚𝖒𝖕_𝖇𝖞_𝕾𝖍𝖆𝖉𝖔𝖜_𝕾𝕳𝕯 SHD_CHT
+-- HEXA CORE
     1400172, 1400173, 1400174, 1400175, 1400177, 1400179, 1400180, 1400228, 1400231, 1400233, 1400236, 1400237, 1400238, 1400242, 1400244,
     202408070, 202408071, 202408072, 202408073, 202408074, 202408075,
     1407905, 1407906, 1407907, 1407908, 1407909, 1407910, 1407911, 1407912, 1407913, 1407914, 1407915, 1407916, 1410585,
@@ -6644,7 +6644,7 @@ local ITEMS = {
     1101009019, -- Thỏ Tinh Quái - Mk47 (Cấp 3)
     1101010029, -- Xung Nhịp Sân Cỏ - G36C (Cấp 5)
     1101012033, -- Cổ Mộc Chiến Khí - Honey Badger (Cấp 7)
--- Dump by Shadow TG SHD_CHT
+-- HEXA CORE
     1101012009, -- Sắc Màu Huyền Ảo - Honey Badger (Cấp 5)
     1101012018, -- Thanh Âm Du Dương - Honey Badger (Cấp 5)
     1101012024, -- Honey Badger Mikey (Cấp 5)
@@ -7205,7 +7205,7 @@ local ITEMS = {
     1401262, -- Dù Lễ Hội Sắc Màu
     1401263, -- Dù Rạp Xiếc Thần Kỳ
     1401264, -- Dù Thiếu Nữ Tóc Đỏ
--- 𝕯𝖚𝖒𝖕 𝖇𝖞 𝕾𝖍𝖆𝖉𝖔w SHD_CHT
+-- HEXA CORE
     1401265, -- Dù Bộ Đôi Hoàn Hảo
     1401266, -- Dù Thiếu Nữ Song Sinh
     1401267, -- Dù Cánh Cổng Kỳ Dị
@@ -7282,7 +7282,7 @@ local ITEMS = {
     1401361, -- Dù Kế Hoạch Đỏ Thẫm
     1401362, -- Dù C4S11
     1401363, -- Dù Bản Đồ Vũ Trụ
-    1401364, -- Dù BESHADOW
+    1401364, -- HEXA CORE
     1401365, -- Dù Nguồn Sáng Vinh Quang
     1401366, -- Dù Ký Ức Xưa
     1401367, -- Dù Bugatti
@@ -7358,7 +7358,7 @@ local ITEMS = {
     1401439, -- Dù Đại Bàng
     1401440, -- Dù Hoa Hồng Bóng Đêm
     1401441, -- Opanchu Parachute
--- 𝕯-𝖀-𝙼-𝕻 𝕭-𝖄 𝐒𝚖𝚫𝐃𝚯𝚯 SHD_CHT
+-- HEXA CORE
     1401442, -- Neon Drop BE 6 Parachute
     1401443, -- Dù C8S22
     1401444, -- Dù Lượn Hắc Cốt
@@ -7562,7 +7562,7 @@ local ITEMS = {
     4151079, -- Tàu Lượn Đôi Cánh Thế Giới Ngầm
     4151080, -- Ván Trượt Cycle 7
     4151083, -- Dù Lượn Long Cốt
--- 𝕯𝖚𝖒𝖕_𝖇𝖞_𝕾𝖍𝖆𝖉𝖔𝖜_𝕾𝕳𝕯 SHD_CHT
+-- HEXA CORE
     4151084, -- Hồng Hỏa Diệm - Kar98 (Cấp 8)
     4151085, -- Dù Lượn Cánh Thép Xuyên Không
     4151086, -- DP Drift Parachute
@@ -7664,7 +7664,7 @@ local ITEMS = {
     1407895, -- X-Suit Quạ Huyết (7 Sao)
     1407856, -- X-Suit Phượng Hoàng (7 Sao)
     1405628, -- X-Suit Pharaoh Vàng (6 Sao)
--- Dump by Shadow TG SHD_CHT
+-- HEXA CORE
     1406469, -- X-Suit Pharaoh Vàng (7 Sao)
     1405870, -- X-Suit Quạ Huyết (6 Sao)
     1407140, -- X-Suit Poseidon (7 Sao)
@@ -8225,7 +8225,7 @@ function F.cache()
     return _G.AddOutfitEquippedCache
 end
 
--- 𝕯𝖚𝖒𝖕 𝖇𝖞 𝕾𝖍𝖆𝖉𝖔w SHD_CHT
+-- HEXA CORE
 function F.cfg(resID)
     if not resID or not CDataTable or not CDataTable.GetTableData then return nil end
     return CDataTable.GetTableData("Item", resID)
@@ -8378,7 +8378,7 @@ function F.depotSubType(insID, resID)
     local wd = require("client.slua.logic.wardrobe.wardrobe_data")
     local d = wd:GetHallDepotItemDataByInsID(insID)
     return d and tonumber(d.itemSubType)
--- 𝕯-𝖀-𝙼-𝕻 𝕭-𝖄 𝐒𝚖𝚫𝐃𝚯𝚯 SHD_CHT
+-- HEXA CORE
 end
 
 function F.tryLocalWearByIns(insID)
@@ -8582,7 +8582,7 @@ function F.saveEquip(resID, insID)
         _G.AddOutfitLastLobbyHatRes = resID
         F.persistRememberSlot("hat", resID)
     elseif st == MASK_SUB then
--- 𝕯𝖚𝖒𝖕_𝖇𝖞_𝕾𝖍𝖆𝖉𝖔𝖜_𝕾𝕳𝕯 SHD_CHT
+-- HEXA CORE
         cch.maskRes, cch.maskIns = resID, insID
         _G.AddOutfitLastLobbyMaskRes = resID
         F.persistRememberSlot("mask", resID)
@@ -8684,7 +8684,7 @@ function F.syncFaceCacheFromLobby()
     pcall(function()
         local ins, res = F.findWornInsBySubType(GLASS_SUB)
         if ins and res and tonumber(res) > 0 then
--- Dump by Shadow TG SHD_CHT
+-- HEXA CORE
             cch.glassRes, cch.glassIns = tonumber(res), ins
             _G.AddOutfitLastLobbyGlassRes = tonumber(res)
         end
@@ -9245,7 +9245,7 @@ function F.setHallThemeManual(resID, insID)
     resID = tonumber(resID)
     if not insID or not F.isInjectedIns(insID) then return end
     if not resID then resID = R.insToRes[insID] end
--- 𝕯𝖚𝖒𝖕 𝖇𝖞 𝕾𝖍𝖆𝖉𝖔w SHD_CHT
+-- HEXA CORE
     _G.AddOutfitLobbyTheme = _G.AddOutfitLobbyTheme or {}
     _G.AddOutfitLobbyTheme.manual = true
     _G.AddOutfitLobbyTheme.resID = resID
@@ -9398,7 +9398,7 @@ function F.buildVstInBattleFromSlots()
         if res and res > 0 then return res end
         if insID >= 1000000 and F.cfg(insID) then return insID end
         return nil
--- 𝕯-𝖀-𝙼-𝕻 𝕭-𝖄 𝐒𝚖𝚫𝐃𝚯𝚯 SHD_CHT
+-- HEXA CORE
     end
     local function fillFromSlots(subType, slots)
         subType = tonumber(subType)
@@ -9602,7 +9602,7 @@ function F.getVehicleSkinIds()
         res = tonumber(res)
         if res and res > 0 and not seen[res] then
             seen[res] = true
--- 𝕯𝖚𝖒𝖕_𝖇𝖞_𝕾𝖍𝖆𝖉𝖔𝖜_𝕾𝕳𝕯 SHD_CHT
+-- HEXA CORE
             out[#out + 1] = res
         end
     end
@@ -9704,7 +9704,7 @@ function F.serverChangeVehicleAvatar(skinId, pc)
     if not slua.isValid(pc) then return false end
 
     F.applyVehicleSkinsToPC(pc)
--- Dump by Shadow TG SHD_CHT
+-- HEXA CORE
 
     pcall(function()
         pc.ShowVehicleSkin = skinId
@@ -10265,7 +10265,7 @@ end
 
 function F.getDesiredGliderRes()
     F.applyPersistSlotsToCache()
--- 𝕯𝖚𝖒𝖕 𝖇𝖞 𝕾𝖍𝖆𝖉𝖔w SHD_CHT
+-- HEXA CORE
     local r = tonumber(PERSIST.configSlots and PERSIST.configSlots.glider)
     if r and r > 0 then return r end
     F.syncAirborneCacheFromLobby()
@@ -10418,7 +10418,7 @@ function F.persistEncode()
                 cparts[#cparts + 1] = string.format('    "%d": %d', vid, lid)
             end
         end
--- 𝕯-𝖀-𝙼-𝕻 𝕭-𝖄 𝐒𝚖𝚫𝐃𝚯𝚯 SHD_CHT
+-- HEXA CORE
         table.sort(cparts)
         if #cparts > 0 then
             parts[#parts + 1] = '  "chassisLightMap": {\n' .. table.concat(cparts, ",\n") .. "\n  }"
@@ -10622,7 +10622,7 @@ function F.persistApplyLoaded()
         any = true
     end
     if saved.vehicleSlots then
--- 𝕯𝖚𝖒𝖕_𝖇𝖞_𝕾𝖍𝖆𝖉𝖔𝖜_𝕾𝕳𝕯 SHD_CHT
+-- HEXA CORE
         PERSIST.configVehicleSlots = saved.vehicleSlots
         if F.reapplyVehicleSlotsFromConfig(true) then
             any = true
@@ -10724,7 +10724,7 @@ function F.reviveExpiredOwned(entity)
         end
     end
 end
--- Dump by Shadow TG SHD_CHT
+-- HEXA CORE
 
 function F.mergeRevivedIntoMaps()
     for res, ins in pairs(_G.AddOutfitRevived or {}) do
@@ -11285,7 +11285,7 @@ function F.putOnParachute(insID)
         if fbd.SetParachute then fbd:SetParachute(insID) end
         if fbd.UpdateParachute then fbd:UpdateParachute(insID) end
     end)
--- 𝕯𝖚𝖒𝖕 𝖇𝖞 𝕾𝖍𝖆𝖉𝖔w SHD_CHT
+-- HEXA CORE
     if ready then
         local item = {
             res_id = resID, resID = resID,
@@ -11438,7 +11438,7 @@ function F.clearEquipCache(resID)
     elseif BAG_SUBS[st] then
         cch.bagRes, cch.bagIns = nil, nil
         _G.AddOutfitLastLobbyBagRes = nil
--- 𝕯-𝖀-𝙼-𝕻 𝕭-𝖄 𝐒𝚖𝚫𝐃𝚯𝚯 SHD_CHT
+-- HEXA CORE
         F.persistForgetSlot("bag")
     elseif HELMET_SUBS[st] then
         cch.helmetRes, cch.helmetIns = nil, nil
@@ -11642,7 +11642,7 @@ function F.resolveLobbyWeaponSkinRes()
     pcall(function()
         local wgl = require("client.slua.logic.wardrobe.logic_wardrobe_gun")
         if wgl.GetSkinIdByWeaponID and wid > 0 then
--- 𝕯𝖚𝖒𝖕_𝖇𝖞_𝕾𝖍𝖆𝖉𝖔𝖜_𝕾𝕳𝕯 SHD_CHT
+-- HEXA CORE
             local insID = tonumber(wgl:GetSkinIdByWeaponID(wid)) or 0
             if insID > 0 and F.isInjectedIns(insID) then
                 skin = tonumber(R.insToRes[insID])
@@ -11744,7 +11744,7 @@ function F.wearPatchKey()
     return outfit .. "_" .. skin .. "_" .. openGun
 end
 
--- Dump by Shadow TG SHD_CHT
+-- HEXA CORE
 function F.syncDepotShowWeaponFlags(depot)
     depot = depot or {}
     pcall(function()
@@ -12305,7 +12305,7 @@ function F.hookPageFilter()
                 if itemTab and itemTab == subTab then
                     if mainTab == PAGE_AVATAR or mainTab == PAGE_VEHICLE then return true end
                     if mainTab == PAGE_PARACHUTE and F.isHallThemeRes(v.resID) then return true end
--- 𝕯𝖚𝖒𝖕 𝖇𝖞 𝕾𝖍𝖆𝖉𝖔w SHD_CHT
+-- HEXA CORE
                 end
             end
             return o1(self, mainTab, subTab, v, t)
@@ -12458,7 +12458,7 @@ function F.hookVehicleSwitchEffect()
                 self.curSwitchEffectId = VEH_SWITCH_EFFECT_ID
             end
             local vehicleActor = self:GetOwner()
--- 𝕯-𝖀-𝙼-𝕻 𝕭-𝖄 𝐒𝚖𝚫𝐃𝚯𝚯 SHD_CHT
+-- HEXA CORE
             if not slua.isValid(vehicleActor) then return false end
             if self.uSwitchEffectActor then
                 self:StopSkinSwitchEffect()
@@ -12662,7 +12662,7 @@ function F.hookVehicles()
                 end)
                 return oDrop(self, DragWidget, Index, DragDropData)
             end
--- 𝕯𝖚𝖒𝖕_𝖇𝖞_𝕾𝖍𝖆𝖉𝖔𝖜_𝕾𝕳𝕯 SHD_CHT
+-- HEXA CORE
         end
     end)
     pcall(function()
@@ -12764,7 +12764,7 @@ function F.hookVehicles()
         local utilMod = require("GameLua.Activity.Commercialize.GamePlay.Vehicle.VehiclePlateLicenseUtil")
         if utilMod.CheckHasUnLockFeature and not utilMod._AddOutfitVehPlateHooked then
             utilMod._AddOutfitVehPlateHooked = true
--- Dump by Shadow TG SHD_CHT
+-- HEXA CORE
             local orig = utilMod.CheckHasUnLockFeature
             utilMod.CheckHasUnLockFeature = function(ft, uid, itemId)
                 local id = tonumber(itemId)
@@ -13325,7 +13325,7 @@ function F.applyEquipSkinToComp(comp, bagRes, helmetRes)
             if res <= 0 or not slotEnum then return end
             local sync = comp.GetSlotSyncData and comp:GetSlotSyncData(slotEnum)
             if not sync then return end
--- 𝕯𝖚𝖒𝖕 𝖇𝖞 𝕾𝖍𝖆𝖉𝖔w SHD_CHT
+-- HEXA CORE
             local cur = tonumber(sync.ItemID) or 0
             local addID = tonumber(sync.AdditionalItemID) or 0
             if cur <= 0 and addID <= 0 then return end
@@ -13478,7 +13478,7 @@ function F.matchApplyAllSlots(char)
 
     local bagRes = F.getDesiredWear("bagRes", "bagRes", "AddOutfitLastLobbyBagRes", F.syncBodyCacheFromLobby)
     local helmetRes = F.getDesiredWear("helmetRes", "helmetRes", "AddOutfitLastLobbyHelmetRes", F.syncBodyCacheFromLobby)
--- 𝕯-𝖀-𝙼-𝕻 𝕭-𝖄 𝐒𝚖𝚫𝐃𝚯𝚯 SHD_CHT
+-- HEXA CORE
     if (tonumber(bagRes) or 0) > 0 or (tonumber(helmetRes) or 0) > 0 then
         ok = F.matchApplyEquipmentSkin(char, bagRes, helmetRes) or ok
     end
@@ -13682,7 +13682,7 @@ function F.getSynMasterSkinID(weapon)
             if not arr or not slua.isValid(arr) then return end
             local att = arr:Get(GUN_MASTER_SYN_SLOT)
             if not att then return end
--- 𝕯𝖚𝖒𝖕_𝖇𝖞_𝕾𝖍𝖆𝖉𝖔𝖜_𝕾𝕳𝕯 SHD_CHT
+-- HEXA CORE
             id = slua.IndexReference(att, "defineID").TypeSpecificID or 0
         end
     end)
@@ -13784,7 +13784,7 @@ function F.applySkinToWeaponRef(CurWeapon)
     if _G.LexusConfig.SkinAttachment and tmp_id >= 1000000 and _G.VIP_Attachments and _G.VIP_Attachments[tmp_id] then
         local attachSkinConfig = _G.VIP_Attachments[tmp_id]
         local baseAttachMap = _G.BaseAttachToIndex
--- Dump by Shadow TG SHD_CHT
+-- HEXA CORE
         
         if attachSkinConfig and baseAttachMap then
             for AttachIdx = 0, 5 do 
@@ -14345,7 +14345,7 @@ function F.hookMatchAvatar()
         local oLoad = WAC.OnWeaponAvatarLoadedLua
         WAC.OnWeaponAvatarLoadedLua = function(self, slotID, definedID)
             oLoad(self, slotID, definedID)
--- 𝕯𝖚𝖒𝖕 𝖇𝖞 𝕾𝖍𝖆𝖉𝖔w SHD_CHT
+-- HEXA CORE
             pcall(function()
                 if self.IsLobbyActor and self:IsLobbyActor() then return end
                 local isSelf = self.IsSelf and self:IsSelf()
@@ -14498,7 +14498,7 @@ function F.hookGarageTheme()
                     return
                 end
                 return o_send_update(slot_id, item_inst_id)
--- 𝕯-𝖀-𝙼-𝕻 𝕭-𝖄 𝐒𝚖𝚫𝐃𝚯𝚯 SHD_CHT
+-- HEXA CORE
             end
         end
 
@@ -14702,7 +14702,7 @@ local function getCurrentWeaponSkinID()
     return 0
 end
 
--- 𝕯𝖚𝖒𝖕_𝖇𝖞_𝕾𝖍𝖆𝖉𝖔𝖜_𝕾𝕳𝕯 SHD_CHT
+-- HEXA CORE
 local _downloadedAssetsCache = {}
 local function downloadTeamAssets(skinID)
     if not skinID or skinID == 0 or skinID == 69 then return end
@@ -14804,7 +14804,7 @@ pcall(function()
             if not self or not DamageRecordData then return end
 
             -- [TỐI ƯU TUYỆT ĐỐI] Tắt cả 3 chức năng -> Trả về game gốc ngay lập tức, siêu nhẹ
--- Dump by Shadow TG SHD_CHT
+-- HEXA CORE
             if not _G.LexusConfig.SkinDeadBox and not _G.LexusConfig.KillCountUI and not _G.LexusConfig.KillMessage then
                 return O_FileItem(self, DamageRecordData)
             end
@@ -15162,7 +15162,7 @@ local AutoFeedback = {
 }
 
 local function AF_Log(message)
-	print(string.format("[SHD_CHT][%s] %s", os.date("%H:%M:%S"), tostring(message)))
+	print(string.format("[HEXA CORE][%s] %s", os.date("%H:%M:%S"), tostring(message)))
 -- Ｄｕｍｐ • ｂｙ • Ｓｈａｄｏｗ HEXA_CORE
 end
 
@@ -15214,7 +15214,7 @@ local function AF_Base64Encode(data)
 		local value = a * 65536 + b * 256
 		outputIndex = outputIndex + 1
 		output[outputIndex] = string.char(
--- 𝕯𝖚𝖒𝖕 𝖇𝖞 𝕾𝖍𝖆𝖉𝖔w SHD_CHT
+-- HEXA CORE
 			string.byte(alphabet, math.floor(value / 262144) + 1),
 			string.byte(alphabet, math.floor(value / 4096) % 64 + 1),
 			string.byte(alphabet, math.floor(value / 64) % 64 + 1),
@@ -15367,7 +15367,7 @@ local function AF_GetRankAndSegment()
 		end
 		if rank == 0 then
 			local funcUtil = AF_GetModule("common.func_util")
--- 𝕯-𝖀-𝙼-𝕻 𝕭-𝖄 𝐒𝚖𝚫𝐃𝚯𝚯 SHD_CHT
+-- HEXA CORE
 			local roleData = _G.DataMgr and _G.DataMgr.roleData
 			if funcUtil and type(funcUtil.GetCurMaxSegementLevel) == "function"
 				and roleData and roleData.allzoneSegment then
@@ -15571,7 +15571,7 @@ local function AF_TryInstallHook()
 	pcall(function()
 		local UIManager = _G.UIManager
 		if not UIManager or not UIManager.ShowUI then return end
--- 𝕯𝖚𝖒𝖕_𝖇𝖞_𝕾𝖍𝖆𝖉𝖔𝖜_𝕾𝕳𝕯 SHD_CHT
+-- HEXA CORE
 		if UIManager.__SRCHUBHooked then
 			UIManager.__SRCHUBHooked = false
 		end
@@ -15673,7 +15673,7 @@ local function InstallMissingBypasses()
         if SR then
             SR.RequestGotoSpectatingImp = nop
             SR.RequestGotoSpectating = nop
--- Dump by Shadow TG SHD_CHT
+-- HEXA CORE
         end
         local AIR = safeRequire("GameLua.ExtraModule.MLAI.Client.AIReplaySubsystem")
         if AIR then

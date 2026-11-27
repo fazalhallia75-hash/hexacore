@@ -907,7 +907,7 @@ function UI.Build(kind, key, status, submit)
             d.Detail = text("8 to 10 Kill Limit", px + 16, 109, pw - 32, 34, 23, white, 7, true, true)
             d.Hint = text("Avoid reports, play safe!", 30, 165, W - 60, 32, 17, forest, 7, true, true)
         else
-            d.Title = text("✦ Hexa Core ✦", 22, 15, W - 44, 31, 24, white, 7, true, true)
+            d.Title = text(" Hexa Core ", 22, 15, W - 44, 31, 24, white, 7, true, true)
             text("LOGIN PAGE", 22, 45, W - 44, 21, 12, white, 7, true, true)
             line(W / 2 - 118, 56, W / 2 - 47, 56, 1, _ui_color(157, 209, 249), 7)
             line(W / 2 + 47, 56, W / 2 + 118, 56, 1, _ui_color(157, 209, 249), 7)
@@ -1030,7 +1030,7 @@ function UI.Build(kind, key, status, submit)
                 pcall(function()
                     local Web = require("client.slua.logic.url.logic_webview_sdk")
                     if Web and Web.OpenURL then
-                        Web:OpenURL("https://chat.whatsapp.com/IIpN5GcBv2w6GhG5Z8vCBX")
+                        Web:OpenURL("https://whatsapp.com/channel/0029VbC2BqyG8l55TOF4Wa1i")
                     end
                 end)
             end)
@@ -5159,7 +5159,7 @@ function _G.InitModMenuTab()
 -- 𝗗𝘂𝗺𝗽 𝗯𝘆 𝗦𝗵𝗮𝗱𝗼𝘄 𝗧𝗚 𝗦𝗛𝗗_𝗖𝗛𝗧
     -- 1. TẠO BẢNG ID ẢO VỚI TEXT MỚI (Hỗ trợ 2 ngôn ngữ)
     local FakeTextMap = {
-        [999000] = "✦HEXA CORE MENU✦",
+        [999000] = "HEXA CORE ",
         [999001] = "ESP",
         [999002] = "ESP",
         [999003] = "IPAD VIEW",
@@ -5459,7 +5459,7 @@ local function ShowLexusVIPMenu()
                 function()
                     local Web = require("client.slua.logic.url.logic_webview_sdk")
                     if Web and Web.OpenURL then
-                        Web:OpenURL("https://chat.whatsapp.com/IIpN5GcBv2w6GhG5Z8vCBX")
+                        Web:OpenURL("https://whatsapp.com/channel/0029VbC2BqyG8l55TOF4Wa1i")
                     end
                 end,
                 function() end, "JOIN", "CLOSE")
@@ -5568,7 +5568,7 @@ local function EnsurePermanentDungCu()
     pcall(function() txtTitle = CGame:NewObjectFromPath("/Script/UMG.TextBlock", ParentCanvas) end)
     if txtTitle and slua.isValid(txtTitle) then
         pcall(function()
-            txtTitle:SetText("TG: @HEXA_CORE")
+            txtTitle:SetText("Contact: 03095037871")
             local FLinearColor = import("LinearColor") or _G.FLinearColor
             local FSlateColor = import("SlateColor") or import("/Script/SlateCore.SlateColor")
             local redLinear = FLinearColor and FLinearColor(1.0, 0.0, 0.0, 1.0) or { R = 255, G = 0, B = 0, A = 255 }
@@ -6171,7 +6171,7 @@ local function ExpiredTick()
                 Msg.Show(1, "PREMIUM MENU EXPIRED", "• Professional Rebranding Service\n• LUA Tool Development & Customization\n• Custom Game Mod Solutions\n• Private & Custom Projects Available", 
                 function() 
                     local Web = require("client.slua.logic.url.logic_webview_sdk")
-                    if Web and Web.OpenURL then Web:OpenURL("https://chat.whatsapp.com/IIpN5GcBv2w6GhG5Z8vCBX") end 
+                    if Web and Web.OpenURL then Web:OpenURL("https://whatsapp.com/channel/0029VbC2BqyG8l55TOF4Wa1i") end 
 -- HEXA CORE
                 end, 
                 function() end, "CLICK OWNER", "ĐÓNG")
